@@ -42,10 +42,13 @@ public class ServerConnexion {
         
         //test.add(inSocket.readLine());
         String line="czc";
-        while(again){
+        int playNumber = 0;
+       // playNumber = Integer.parseInt(inSocket.readLine());
+        System.out.println(inSocket.readLine());
+        /*while(again){
         test.add(inSocket.readLine());
-        }
-        TP5Communication.Playlist=test;
+        }*/
+        //TP5Communication.Playlist=test;
 
     }
 }
