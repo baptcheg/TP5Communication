@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import javax.swing.JFrame;
@@ -20,11 +21,12 @@ public class TP5Communication {
     static String firstname;
     static int placeNumber;
     static String pieceName;
-    static List<String> Playlist;
+    static List<String> Playlist = new ArrayList<String>();
+    static int playNumber;
     
     public static void main(String[] args) throws Exception  {
         ServerConnexion.Connexion1();
-                for(String elem: Playlist)
+       for(String elem: Playlist)
        {
        	 System.out.println (elem);
        }

@@ -212,10 +212,9 @@ public class IG extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-                System.out.println("zboub");
-                TP5Communication.setString(getTextFieldName(), getTextFieldFirstname(), getComboboxPieceName(), getComboboxPlaceNumber());
-                TP5Communication.display(); //Pour le debug
-                ServerConnexion.Connexion();
+            TP5Communication.setString(getTextFieldName(), getTextFieldFirstname(), getComboboxPieceName(), getComboboxPlaceNumber());
+            TP5Communication.display(); //Pour le debug
+            ServerConnexion.Connexion();
         } catch (Exception ex) {
             Logger.getLogger(IG.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -280,11 +279,11 @@ public class IG extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void fillComboboxPieceName() {
-        String[] pieceNameString = {"Les fourberies de Scapin", "Le medecin malgre lui"};
         jComboBox1.removeAllItems();
-        for (int i = 0; i < pieceNameString.length; i++) {
-            jComboBox1.addItem(pieceNameString[i]);
-        }
+            for (String elem : TP5Communication.Playlist) {
+                jComboBox1.addItem(elem);
+                System.out.println(elem);
+            }
     }
 
     public void fillComboboxPlaceNumber() {
@@ -309,5 +308,4 @@ public class IG extends javax.swing.JFrame {
     public int getComboboxPlaceNumber() {
         return Integer.parseInt(jComboBox2.getSelectedItem().toString());
     }
-
 }

@@ -19,7 +19,7 @@ public class ServerConnexion {
         String saisie;
         String retour;
         Boolean again = true;
-        Socket socket = new Socket("localhost", 4444);
+        Socket socket = new Socket("localhost", 8089);
         System.out.println((java.net.InetAddress.getLocalHost()).toString());
         PrintWriter outSocket = new PrintWriter(socket.getOutputStream(), true);
         BufferedReader inSocket = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -28,27 +28,28 @@ public class ServerConnexion {
         outSocket.println(TP5Communication.pieceName);
         outSocket.println(TP5Communication.placeNumber);
     }
-    
+
     public static void Connexion1() throws Exception {
+        //Permet de récupérer la liste des différentes pieces et de les stocker dans Playlist de TP5Communication
         List<String> test = new ArrayList<String>();
         String saisie;
         String retour;
         Boolean again = true;
-        Socket socket = new Socket("localhost", 4444);
+        Socket socket = new Socket("localhost", 8089);
         System.out.println((java.net.InetAddress.getLocalHost()).toString());
         PrintWriter outSocket = new PrintWriter(socket.getOutputStream(), true);
         BufferedReader inSocket = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-       // boolean test=false;
-        
-        //test.add(inSocket.readLine());
-        String line="czc";
-        int playNumber = 0;
-       // playNumber = Integer.parseInt(inSocket.readLine());
-        System.out.println(inSocket.readLine());
-        /*while(again){
-        test.add(inSocket.readLine());
-        }*/
-        //TP5Communication.Playlist=test;
+        // boolean test=false;
 
+        //test.add(inSocket.readLine());
+        //String line="czc";
+        int playNumber = 0;
+        // playNumber = Integer.parseInt(inSocket.readLine());
+        playNumber = Integer.parseInt(inSocket.readLine());
+        System.out.println(playNumber);
+        for (int i = 0; i < playNumber; i++) {
+            test.add(inSocket.readLine());
+        }
+        TP5Communication.Playlist = test;
     }
 }
