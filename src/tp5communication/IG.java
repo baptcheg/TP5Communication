@@ -14,18 +14,15 @@ import javax.swing.JFrame;
  */
 public class IG extends javax.swing.JFrame {
 
-    /**
-     * Creates new form IG
-     */
     public IG() {
         initComponents();
-        fillComboboxPieceName();
-        fillComboboxPlaceNumber();
+        fillComboboxPieceName();//on modifie la combobox contenant le nom des piècs
+        fillComboboxPlaceNumber(); //on modifie celle aussi permettant d'afficher les places
     }
 
     public void RunIG() {
         IG f = new IG();
-        f.setTitle("Communication");
+        f.setTitle("Réservations pièces de théâtre");
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setLocationRelativeTo(null);
@@ -142,33 +139,32 @@ public class IG extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 55, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 79, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(77, 77, 77))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(36, 36, 36))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(82, 82, 82))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,10 +207,11 @@ public class IG extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
+        try {//Action réalisé après que l'utilisateur presse la touche ok
+            //On stockes les variables rentrées par l'utilsiateur pour les envoyer au serveur
             TP5Communication.setString(getTextFieldName(), getTextFieldFirstname(), getComboboxPieceName(), getComboboxPlaceNumber());
             TP5Communication.display(); //Pour le debug
-            ServerConnexion.Connexion();
+            ServerConnexion.Connexion(); //On se connecte et on envoi les données
         } catch (Exception ex) {
             Logger.getLogger(IG.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -279,20 +276,22 @@ public class IG extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void fillComboboxPieceName() {
+        //Fonction permettant de remplir le combobox avec la liste contenant le nom des pièces stockées dans la bdd
         jComboBox1.removeAllItems();
-            for (String elem : TP5Communication.Playlist) {
-                jComboBox1.addItem(elem);
-                System.out.println(elem);
-            }
+        for (String elem : TP5Communication.Playlist) {
+            jComboBox1.addItem(elem);  //on ajoute chaque élément de la liste comme item
+            System.out.println(elem);
+        }
     }
 
     public void fillComboboxPlaceNumber() {
-        jComboBox2.removeAllItems();
+        jComboBox2.removeAllItems(); //On remplit la combobox des nombres de places (1 à 5)
         for (int i = 1; i < 6; i++) {
             jComboBox2.addItem(i);
         }
     }
 
+    //GETTEUR pour récupérer les différentes informations entrées par l'utilisateur
     public String getTextFieldName() {
         return jTextField1.getText();
     }

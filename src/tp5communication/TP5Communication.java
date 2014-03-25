@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Scanner;
 import javax.swing.JFrame;
 
-
 public class TP5Communication {
 
     static String name;
@@ -23,28 +22,27 @@ public class TP5Communication {
     static String pieceName;
     static List<String> Playlist = new ArrayList<String>();
     static int playNumber;
-    
-    public static void main(String[] args) throws Exception  {
-        ServerConnexion.Connexion1();
-       for(String elem: Playlist)
-       {
-       	 System.out.println (elem);
-       }
+
+    public static void main(String[] args) throws Exception {
+        ServerConnexion.Connexion1(); //On lance la connexion au serveur pour récupérer la liste des pièces de théâtres
+        //On lance l'iterface graphique
         IG f = new IG();
-        f.RunIG(); 
+        f.RunIG();
     }
-    
-    public static void display(){
+
+    public static void display() {
+        //Fonction pour afficher les différentes entrées de l'utilsiateur
         System.out.println(name);
         System.out.println(firstname);
         System.out.println(pieceName);
-        System.out.println(placeNumber);        
-
+        System.out.println(placeNumber);
     }
-    public static void setString(String userName, String userFirstname, String userPieceName, int userPlaceNumber){
-        name=userName;
-        firstname  = userFirstname;
+
+    public static void setString(String userName, String userFirstname, String userPieceName, int userPlaceNumber) {
+        //fonction permettant de stockées les entrée de l'utilsateur dans les variables crées dans cette classe
+        name = userName;
+        firstname = userFirstname;
         pieceName = userPieceName;
-        placeNumber = userPlaceNumber; 
+        placeNumber = userPlaceNumber;
     }
 }
