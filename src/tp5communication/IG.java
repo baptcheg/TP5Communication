@@ -4,9 +4,13 @@
  */
 package tp5communication;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -14,22 +18,25 @@ import javax.swing.JFrame;
  */
 public class IG extends javax.swing.JFrame {
 
-    /**
-     * Creates new form IG
-     */
+    Boolean ComboboxPieceNameFilled = false;
+
     public IG() {
         initComponents();
-        fillComboboxPieceName();
-        fillComboboxPlaceNumber();
+        fillComboboxPieceName();//on modifie la combobox contenant le nom des piècs
+        fillComboboxPlaceNumber(); //on modifie celle aussi permettant d'afficher les places
     }
 
     public void RunIG() {
         IG f = new IG();
-        f.setTitle("Communication");
+        f.setTitle("Réservations pièces de théâtre");
+        JLabel textLabel = new JLabel("I'm a label in the window", SwingConstants.CENTER);
+        textLabel.setPreferredSize(new Dimension(300, 100));
+        f.getContentPane().add(textLabel, BorderLayout.CENTER);
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setLocationRelativeTo(null);
         f.setVisible(true);
+
     }
 
     /**
@@ -57,6 +64,8 @@ public class IG extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -137,38 +146,45 @@ public class IG extends javax.swing.JFrame {
 
         jLabel7.setText("Système de réservation pour les pièces de théâtre");
 
+        jLabel8.setText("Places restantes:");
+
+        jLabel9.setText("jLabel9");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 55, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(77, 77, 77))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(36, 36, 36))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,13 +206,17 @@ public class IG extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jButton1))
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -207,14 +227,31 @@ public class IG extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        if (ComboboxPieceNameFilled) {
+            System.out.println(getComboboxPieceName());
+            try {
 
+                System.out.println("envoi au srveur");
+                try {
+                    System.out.println(getComboboxPieceName());
+                    displayPlaceNumber(ServerConnexion.getNumberPlaceAvailable(getComboboxPieceName()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+         catch (Exception ex) {
+                Logger.getLogger(IG.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
+        try {//Action réalisé après que l'utilisateur presse la touche ok
+            //On stockes les variables rentrées par l'utilsiateur pour les envoyer au serveur
+            ServerConnexion.StopUpdatePlaceAvailable();
             TP5Communication.setString(getTextFieldName(), getTextFieldFirstname(), getComboboxPieceName(), getComboboxPlaceNumber());
             TP5Communication.display(); //Pour le debug
-            ServerConnexion.Connexion();
+            ServerConnexion.Connexion(); //On se connecte et on envoi les données
+            // jLabel4.setText(ServerConnexion.Connexion3());
         } catch (Exception ex) {
             Logger.getLogger(IG.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -273,26 +310,36 @@ public class IG extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 
     public void fillComboboxPieceName() {
+        //Fonction permettant de remplir le combobox avec la liste contenant le nom des pièces stockées dans la bdd
         jComboBox1.removeAllItems();
-            for (String elem : TP5Communication.Playlist) {
-                jComboBox1.addItem(elem);
-                System.out.println(elem);
-            }
-    }
-
-    public void fillComboboxPlaceNumber() {
-        jComboBox2.removeAllItems();
-        for (int i = 1; i < 6; i++) {
-            jComboBox2.addItem(i);
+        for (String elem : TP5Communication.Playlist) {
+            jComboBox1.addItem(elem);  //on ajoute chaque élément de la liste comme item
+            System.out.println(elem);
         }
     }
 
+    public void fillComboboxPlaceNumber() {
+        jComboBox2.removeAllItems(); //On remplit la combobox des nombres de places (1 à 5)
+        for (int i = 1; i < 6; i++) {
+            jComboBox2.addItem(i);
+        }
+        ComboboxPieceNameFilled = true;
+        try {
+            displayPlaceNumber(ServerConnexion.getNumberPlaceAvailable(getComboboxPieceName()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //GETTEUR pour récupérer les différentes informations entrées par l'utilisateur
     public String getTextFieldName() {
         return jTextField1.getText();
     }
@@ -307,5 +354,11 @@ public class IG extends javax.swing.JFrame {
 
     public int getComboboxPlaceNumber() {
         return Integer.parseInt(jComboBox2.getSelectedItem().toString());
+    }
+
+    public void displayPlaceNumber(String s) throws Exception {
+        jLabel9.setText(s);
+
+
     }
 }
