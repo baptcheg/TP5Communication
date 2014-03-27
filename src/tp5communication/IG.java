@@ -29,9 +29,6 @@ public class IG extends javax.swing.JFrame {
     public void RunIG() {
         IG f = new IG();
         f.setTitle("Réservations pièces de théâtre");
-        JLabel textLabel = new JLabel("I'm a label in the window", SwingConstants.CENTER);
-        textLabel.setPreferredSize(new Dimension(300, 100));
-        f.getContentPane().add(textLabel, BorderLayout.CENTER);
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setLocationRelativeTo(null);
@@ -111,6 +108,11 @@ public class IG extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+        });
 
         jLabel2.setText("Nom de la pièce");
 
@@ -135,12 +137,22 @@ public class IG extends javax.swing.JFrame {
         jLabel5.setText("Nombre de place");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("prénom:");
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
+            }
+        });
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
             }
         });
 
@@ -228,6 +240,8 @@ public class IG extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         if (ComboboxPieceNameFilled) {
+            System.out.println("test");
+            Sound.playSound(Sound.soundClick);
             System.out.println(getComboboxPieceName());
             try {
 
@@ -246,12 +260,16 @@ public class IG extends javax.swing.JFrame {
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {//Action réalisé après que l'utilisateur presse la touche ok
-            //On stockes les variables rentrées par l'utilsiateur pour les envoyer au serveur
+             if(jTextField1.getText().equals("") ||jTextField2.getText().equals("")){
+                jLabel4.setText("REMPLIS DUCON");} else {
+             //On stockes les variables rentrées par l'utilsiateur pour les envoyer au serveur
             ServerConnexion.StopUpdatePlaceAvailable();
             TP5Communication.setString(getTextFieldName(), getTextFieldFirstname(), getComboboxPieceName(), getComboboxPlaceNumber());
             TP5Communication.display(); //Pour le debug
             ServerConnexion.Connexion(); //On se connecte et on envoi les données
             // jLabel4.setText(ServerConnexion.Connexion3());
+             }
+            Sound.playSound(Sound.soundValidation);
         } catch (Exception ex) {
             Logger.getLogger(IG.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -261,6 +279,26 @@ public class IG extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+        if (ComboboxPieceNameFilled) {
+        Sound.playSound(Sound.soundClick);}
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        // TODO add your handling code here:
+        if (ComboboxPieceNameFilled) {
+        Sound.playSound(Sound.soundClick);
+        }
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        // TODO add your handling code here:
+        if (ComboboxPieceNameFilled) {
+            Sound.playSound(Sound.soundClick);
+        }
+    }//GEN-LAST:event_jTextField2FocusGained
 
     /**
      * @param args the command line arguments
@@ -324,6 +362,7 @@ public class IG extends javax.swing.JFrame {
             jComboBox1.addItem(elem);  //on ajoute chaque élément de la liste comme item
             System.out.println(elem);
         }
+        ComboboxPieceNameFilled = true;
     }
 
     public void fillComboboxPlaceNumber() {
@@ -331,7 +370,7 @@ public class IG extends javax.swing.JFrame {
         for (int i = 1; i < 6; i++) {
             jComboBox2.addItem(i);
         }
-        ComboboxPieceNameFilled = true;
+        
         try {
             displayPlaceNumber(ServerConnexion.getNumberPlaceAvailable(getComboboxPieceName()));
         } catch (Exception e) {
@@ -358,7 +397,5 @@ public class IG extends javax.swing.JFrame {
 
     public void displayPlaceNumber(String s) throws Exception {
         jLabel9.setText(s);
-
-
     }
 }
