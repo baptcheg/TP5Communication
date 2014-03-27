@@ -24,7 +24,6 @@ public class TP5Communication {
     static int playNumber;
 
     public static void main(String[] args) throws Exception {
-        //SAid la cochonne
         ServerConnexion.ConnexionTest(); //On lance la connexion au serveur pour récupérer la liste des pièces de théâtres
         //On lance l'iterface graphique
         IG f = new IG();
