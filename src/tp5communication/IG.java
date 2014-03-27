@@ -125,8 +125,6 @@ public class IG extends javax.swing.JFrame {
 
         jLabel3.setText("Valider la réservation");
 
-        jLabel4.setText("Numéro de la réservation");
-
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,7 +226,7 @@ public class IG extends javax.swing.JFrame {
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
@@ -245,7 +243,7 @@ public class IG extends javax.swing.JFrame {
             System.out.println(getComboboxPieceName());
             try {
 
-                System.out.println("envoi au srveur");
+                System.out.println("envoi au serveur");
                 try {
                     System.out.println(getComboboxPieceName());
                     displayPlaceNumber(ServerConnexion.getNumberPlaceAvailable(getComboboxPieceName()));
@@ -260,15 +258,18 @@ public class IG extends javax.swing.JFrame {
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {//Action réalisé après que l'utilisateur presse la touche ok
-             if(jTextField1.getText().equals("") ||jTextField2.getText().equals("")){
-                jLabel4.setText("REMPLIS DUCON");} else {
-             //On stockes les variables rentrées par l'utilsiateur pour les envoyer au serveur
-            ServerConnexion.StopUpdatePlaceAvailable();
-            TP5Communication.setString(getTextFieldName(), getTextFieldFirstname(), getComboboxPieceName(), getComboboxPlaceNumber());
-            TP5Communication.display(); //Pour le debug
-            ServerConnexion.Connexion(); //On se connecte et on envoi les données
-            // jLabel4.setText(ServerConnexion.Connexion3());
-             }
+            if (jTextField1.getText().equals("") || jTextField2.getText().equals("")) {
+                jLabel4.setText("Remplissez le formulaire.");
+            } else {
+               
+                //On stockes les variables rentrées par l'utilsiateur pour les envoyer au serveur
+                ServerConnexion.StopUpdatePlaceAvailable();
+                TP5Communication.setString(getTextFieldName(), getTextFieldFirstname(), getComboboxPieceName(), getComboboxPlaceNumber());
+                TP5Communication.display(); //Pour le debug
+                ServerConnexion.Connexion(); //On se connecte et on envoi les données
+                // jLabel4.setText(ServerConnexion.Connexion3());
+                 jLabel4.setText("Numéro de réservation : "+TP5Communication.idResa);
+            }
             Sound.playSound(Sound.soundValidation);
         } catch (Exception ex) {
             Logger.getLogger(IG.class.getName()).log(Level.SEVERE, null, ex);
@@ -283,13 +284,14 @@ public class IG extends javax.swing.JFrame {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
         if (ComboboxPieceNameFilled) {
-        Sound.playSound(Sound.soundClick);}
+            Sound.playSound(Sound.soundClick);
+        }
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         // TODO add your handling code here:
         if (ComboboxPieceNameFilled) {
-        Sound.playSound(Sound.soundClick);
+            Sound.playSound(Sound.soundClick);
         }
     }//GEN-LAST:event_jTextField1FocusGained
 
@@ -370,7 +372,7 @@ public class IG extends javax.swing.JFrame {
         for (int i = 1; i < 6; i++) {
             jComboBox2.addItem(i);
         }
-        
+
         try {
             displayPlaceNumber(ServerConnexion.getNumberPlaceAvailable(getComboboxPieceName()));
         } catch (Exception e) {

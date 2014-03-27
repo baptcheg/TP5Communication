@@ -22,6 +22,7 @@ public class TP5Communication {
     static String pieceName;
     static List<String> Playlist = new ArrayList<String>();
     static int playNumber;
+    static String idResa;
 
     public static void main(String[] args) throws Exception {
         ServerConnexion.ConnexionTest(); //On lance la connexion au serveur pour récupérer la liste des pièces de théâtres

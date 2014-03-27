@@ -31,6 +31,7 @@ public class ServerConnexion {
         outSocket.println(TP5Communication.firstname);
         outSocket.println(TP5Communication.pieceName);
         outSocket.println(TP5Communication.placeNumber);
+        TP5Communication.idResa = inSocket.readLine();
     }
 
     public static void Connexion1() throws Exception {
